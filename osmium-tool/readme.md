@@ -57,7 +57,7 @@ docker run -it -w /wkd -v $(pwd)/wkd:/wkd stefda/osmium-tool osmium diff result_
 
 ## Results
 
-Here is a modified elem:
+Here is a modified elem (visual diff, and `opl` output)
 
 ![a modified elem](img/modified_elem.png)
 * `-w168225619 v1 dV c11953818 t2012-06-19T23:20:01Z i2983 umobip Tamenity=bicycle_rental Nn1795149147,n1795149149,n1795149146,n1795149145,n1795149147`
@@ -81,13 +81,5 @@ Here is an added one:
 **deteled items**:
 there is no way to get the changeset that deletes an item using this methodology (and we need it to create an adiff file)
 
-**changes on relations members**:
-we need to check this use case, not sure we get the needed info on them
-
 **output format**:
 according to its maintainer, it is not possible to add the Augmented Diffs output format to libosmium: https://github.com/osmcode/osmium-tool/issues/147
-
-NB: the `opl` diff format may be easier to parse :
-```shell
-docker run -it -w /wkd -v $(pwd)/wkd:/wkd stefda/osmium-tool osmium diff result_2018-07-01.osm.pbf result_2018-09-01.osm.pbf -f opl -c
-```
