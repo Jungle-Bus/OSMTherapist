@@ -45,23 +45,36 @@ docker run -it -w /wkd -v $(pwd)/wkd:/wkd stefda/osmium-tool osmium time-filter 
 ```
 
 Make a diff between the two resulting datasets:
+```shell
+docker run -it -w /wkd -v $(pwd)/wkd:/wkd stefda/osmium-tool osmium diff result_2018-07-01.osm.pbf result_2018-09-01.osm.pbf -f opl -c
+```
+
+To get a more visual diff:
 
 ```shell
 docker run -it -w /wkd -v $(pwd)/wkd:/wkd stefda/osmium-tool osmium diff result_2018-07-01.osm.pbf result_2018-09-01.osm.pbf -f debug,color -c
 ```
+
 ## Results
 
 Here is a modified elem:
 
 ![a modified elem](img/modified_elem.png)
+* `-w168225619 v1 dV c11953818 t2012-06-19T23:20:01Z i2983 umobip Tamenity=bicycle_rental Nn1795149147,n1795149149,n1795149146,n1795149145,n1795149147`
+* `+w168225619 v2 dV c60436421 t2018-07-05T12:53:49Z i8508096 uDomaine%20%national%20%de%20%Saint-Cloud Tamenity=bicycle_rental,operator=La%20%Vélocypèderie Nn1795149147,n1795149149,n1795149146,n1795149145,n1795149147
+`
 
 Here is a deleted one:
 
 ![a deleted elem](img/deleted_elem.png)
 
+`-n416410944 v8 dV c18030288 t2013-09-25T16:01:43Z i1065603 uquelqu'un Tref=21206,name=Péri-Montrouge,amenity=bicycle_rental,network=Vélib',capacity=50,operator=JCDecaux x2.3203649 y48.8183003`
+
 Here is an added one:
 
 ![a added elem](img/added_elem.png)
+
+`+n5860659985 v1 dV c62034317 t2018-08-27T09:53:37Z i6654756 usimon_geovelo Tname=Velib,amenity=bicycle_rental x2.2258338 y48.8674637`
 
 ### Issues and limitations
 
